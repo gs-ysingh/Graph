@@ -17,7 +17,16 @@ public class Main {
         List<Integer> vertices = graph.getAdjacentVertices(0);
 
         for(Integer i : vertices) {
+            System.out.println(i); //1, 2
+        }
+
+        List<Integer> dfsList = graph.dfs(2);
+
+        for(Integer i : dfsList) {
             System.out.println(i);
         }
+
+
+
     }
 }

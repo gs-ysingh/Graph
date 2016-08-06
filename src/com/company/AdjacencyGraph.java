@@ -1,6 +1,8 @@
 package com.company;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -9,7 +11,6 @@ import java.util.List;
 public class AdjacencyGraph implements Graph {
     private List<Node> vertexList = new ArrayList<>();
     private GraphType graphType = GraphType.DIRECTED;
-
     int numVertices = 0;
 
     public AdjacencyGraph(int numVertices, GraphType graphType) {
@@ -36,8 +37,35 @@ public class AdjacencyGraph implements Graph {
     @Override
     public List<Integer> getAdjacentVertices(int v) {
         if(v >= this.numVertices || v < 0) {
-            throw new IllegalArgumentException("Vertex number not valied: " + v);
+            throw new IllegalArgumentException("Vertex number not valid: " + v);
         }
         return this.vertexList.get(v).getAdjacentVertices();
+    }
+
+    public List<Integer> dfs(int v) {
+        if(v >= this.numVertices || v < 0) {
+            throw new IllegalArgumentException("Vertex number not valid: " + v);
+        }
+
+        List<Integer> dfsList = new ArrayList<>();
+        this.dfsUtil(v, dfsList);
+
+        return dfsList;
+    }
+
+    public void dfsUtil(int v, List<Integer> dfsList) {
+        if(dfsList.size() != this.numVertices) {
+
+            dfsList.add(v);
+            List<Integer> list = this.vertexList.get(v).getAdjacentVertices();
+
+            for(Integer vertex : list) {
+                if(!dfsList.contains(vertex)) {
+                    this.dfsUtil(vertex, dfsList);
+                }
+            }
+        }
+
+        return;
     }
 }
