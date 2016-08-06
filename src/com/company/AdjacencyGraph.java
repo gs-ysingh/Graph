@@ -54,18 +54,17 @@ public class AdjacencyGraph implements Graph {
     }
 
     public void dfsUtil(int v, List<Integer> dfsList) {
-        if(dfsList.size() != this.numVertices) {
-
-            dfsList.add(v);
-            List<Integer> list = this.vertexList.get(v).getAdjacentVertices();
-
-            for(Integer vertex : list) {
-                if(!dfsList.contains(vertex)) {
-                    this.dfsUtil(vertex, dfsList);
-                }
-            }
+        if(dfsList.size() == this.numVertices) {
+            return;
         }
 
-        return;
+        dfsList.add(v);
+        List<Integer> list = this.vertexList.get(v).getAdjacentVertices();
+
+        for(Integer vertex : list) {
+            if(!dfsList.contains(vertex)) {
+                this.dfsUtil(vertex, dfsList);
+            }
+        }
     }
 }
