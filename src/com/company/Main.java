@@ -14,6 +14,8 @@ public class Main {
         graph.addEdge(2, 3);
         graph.addEdge(3, 3);
 
+        System.out.println("Adjacent vertex of 0: ");
+
         List<Integer> vertices = graph.getAdjacentVertices(0);
 
         for(Integer i : vertices) {
@@ -21,6 +23,8 @@ public class Main {
         }
 
         List<Integer> dfsList = graph.dfs(2);
+
+        System.out.println("DFS starting from 2: ");
 
         for(Integer i : dfsList) {
             System.out.println(i);
