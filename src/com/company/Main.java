@@ -6,6 +6,7 @@ public class Main {
 
     public static void main(String[] args) {
 	    AdjacencyGraph graph = new AdjacencyGraph(4, Graph.GraphType.DIRECTED);
+
         graph.addEdge(0, 1);
         graph.addEdge(0, 2);
         graph.addEdge(1, 2);
