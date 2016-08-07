@@ -39,7 +39,13 @@ public class Main {
             System.out.println(i);
         }
 
+        List<Integer> bfsList = graph.bfs(2);
 
+        System.out.println("bfs for conneted graph: ");
+
+        for(Integer i : bfsList) {
+            System.out.println(i);
+        }
 
     }
 }

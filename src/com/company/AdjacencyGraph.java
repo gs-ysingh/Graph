@@ -1,9 +1,6 @@
 package com.company;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by YSingh on 07/08/16.
@@ -84,5 +81,32 @@ public class AdjacencyGraph implements Graph {
         }
 
         return dfsList;
+    }
+
+    public List<Integer> bfs(int v) {
+        if(v >= this.numVertices || v < 0) {
+            throw new IllegalArgumentException("Invalid vertex: " + v);
+        }
+
+        List<Integer> bfsList = new ArrayList<>();
+
+        Queue<Integer> queue = new PriorityQueue<>();
+
+        queue.add(v);
+
+        while (!queue.isEmpty()) {
+            int vertex = queue.remove();
+            bfsList.add(vertex);
+
+            List<Integer> vertices = this.vertexList.get(vertex).getAdjacentVertices();
+
+            for(Integer i : vertices) {
+                if(!bfsList.contains(i)) {
+                    queue.add(i);
+                }
+            }
+        }
+
+        return bfsList;
     }
 }
