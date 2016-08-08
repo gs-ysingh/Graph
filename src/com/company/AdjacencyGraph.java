@@ -39,6 +39,29 @@ public class AdjacencyGraph implements Graph {
         return this.vertexList.get(v).getAdjacentVertices();
     }
 
+    public boolean isCycle(int v) {
+        if(v >= this.numVertices || v < 0) {
+            throw new IllegalArgumentException("Vertex number not valid: " + v);
+        }
+
+        List<Integer> dfsList = new ArrayList<>();
+        return this.isCycleUtil(v, dfsList, -1);
+    }
+
+    public boolean isCycleUtil(int v, List<Integer> dfsList, int parent) {
+        dfsList.add(v);
+        List<Integer> list = this.vertexList.get(v).getAdjacentVertices();
+        for(Integer vertex : list) {
+            if(!dfsList.contains(vertex)) {
+                return this.isCycleUtil(vertex, dfsList, v);
+            }
+            else if(parent != vertex) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public List<Integer> dfs(int v) {
         if(v >= this.numVertices || v < 0) {
             throw new IllegalArgumentException("Vertex number not valid: " + v);

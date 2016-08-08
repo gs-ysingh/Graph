@@ -2,6 +2,8 @@ package com.company;
 
 import java.util.Scanner;
 
+//SPOJ Problem PT07Y
+
 /**
  * Created by YSingh on 08/08/16.
  */
@@ -22,6 +24,14 @@ public class isTree {
             m --;
         }
 
+        boolean isCycle = graph.isCycle(0);
+
+        if(isCycle) {
+            System.out.println("NO");
+        }
+        else {
+            System.out.println("YES");
+        }
 
     }
 }
