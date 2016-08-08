@@ -5,15 +5,19 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-	    AdjacencyGraph graph = new AdjacencyGraph(8, Graph.GraphType.DIRECTED);
+	    AdjacencyGraph graph = new AdjacencyGraph(3, Graph.GraphType.UNDIRECTED);
 
-        graph.addEdge(0, 1);
+        /*graph.addEdge(0, 1);
         graph.addEdge(0, 2);
         graph.addEdge(1, 2);
         graph.addEdge(2, 0);
         graph.addEdge(2, 3);
         graph.addEdge(3, 3);
-        graph.addEdge(6, 7);
+        graph.addEdge(6, 7);*/
+
+        graph.addEdge(0, 1);
+        graph.addEdge(1, 2);
+        graph.addEdge(2, 1);
 
         System.out.println("Adjacent vertex of 0: ");
 
