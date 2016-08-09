@@ -62,6 +62,30 @@ public class AdjacencyGraph implements Graph {
         return false;
     }
 
+    public int longestPath(int v) {
+        if(v >= this.numVertices || v < 0) {
+            throw new IllegalArgumentException("Vertex number not valid: " + v);
+        }
+        List<Integer> dfsList = new ArrayList<>();
+
+        return this.longestPathUtil(v, dfsList, 0);
+    }
+
+    public int longestPathUtil(int v, List<Integer> dfsList, int max) {
+        dfsList.add(v);
+        List<Integer> list = this.vertexList.get(v).getAdjacentVertices();
+        int temp = max;
+        for(Integer vertex : list) {
+            if(!dfsList.contains(vertex)) {
+                int len = 1 + this.longestPathUtil(vertex, dfsList, temp);
+                if(len > max) {
+                    max = len;
+                }
+            }
+        }
+        return max;
+    }
+
     public List<Integer> dfs(int v) {
         if(v >= this.numVertices || v < 0) {
             throw new IllegalArgumentException("Vertex number not valid: " + v);
