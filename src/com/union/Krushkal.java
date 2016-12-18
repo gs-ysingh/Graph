@@ -199,8 +199,41 @@ public class Krushkal {
         this.edges.add(edge);
     }
 
+    public String formatCurrency(double number, String prefix, String suffix, String thousandSeparator) {
+        String formatting = "";
+
+        if(!prefix.isEmpty()) {
+            formatting =  prefix + " ";
+        }
+
+        formatting = formatting + "%";
+
+        if(!thousandSeparator.isEmpty()) {
+            formatting = formatting + thousandSeparator;
+        }
+
+        formatting = formatting + "f";
+
+        if(!suffix.isEmpty()) {
+            if(suffix.equals("%")) {
+                formatting = formatting + " %" + suffix;
+            }
+            else {
+                formatting = formatting + " " + suffix;
+            }
+
+        }
+
+        return String.format(formatting, number);
+
+    }
+
     public static void main(String[] args) {
+
+
         Krushkal graph = new Krushkal();
+        graph.formatCurrency(123456, "$", "", ",");
+        //graph.formatCurrency(123456, "", "%", ",");
         graph.addEdge("0", "1", 10);
         graph.addEdge("0", "2", 6);
         graph.addEdge("0", "3", 5);
