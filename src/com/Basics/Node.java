@@ -24,7 +24,6 @@ public class Node {
     public List<Integer> getAdjacentVertices() {
         List<Integer> list = new ArrayList<>(this.adjacencySet);
         Collections.sort(list);
-
         return list;
     }
 }
